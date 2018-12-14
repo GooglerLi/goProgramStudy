@@ -4,7 +4,7 @@
 *
  */
 
-package main
+package chanstudy
 
 import (
 	"fmt"
@@ -14,7 +14,9 @@ func hello(done chan bool) {
 	fmt.Println("Hello world goroutine")
 	done <- true
 }
-func main() {
+
+// ChanExample 信道学习例子
+func ChanExample() {
 	done := make(chan bool)
 	go hello(done)
 	<-done
