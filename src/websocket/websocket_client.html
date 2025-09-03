@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Go WebSocket Test</title>
+</head>
+<body>
+    <script type="text/javascript">
+        // 连接到我们的 Go WebSocket 服务器
+        const socket = new WebSocket('ws://localhost:8080/ws');
+
+        // 监听连接打开事件
+        socket.onopen = function(event) {
+            console.log('Connected to server');
+            // 连接成功后发送一条消息
+            socket.send('Hello, Server!');
+        };
+
+        // 监听服务器发送的消息
+        socket.onmessage = function(event) {
+            console.log('Received from server:', event.data);
+        };
+
+        // 监听错误事件
+        socket.onerror = function(error) {
+            console.error('WebSocket error:', error);
+        };
+
+        // 监听连接关闭事件
+        socket.onclose = function(event) {
+            console.log('Disconnected from server');
+        };
+    </script>
+</body>
+</html>
